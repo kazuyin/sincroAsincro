@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery</title>
+</head>
+<body>
+    <h2>jquery</h2><br>
+    <nav>
+     <ul>   
+    <li><button id="get" name="get">get</button></li>
+    <li><button id="post" name="post">post</button></li>
+    <li><button id="load" name="load">load</button></li>
+    </ul>
+    </nav>
+    <article>
+        nombre : <input type="text" name="nombre" id="nombre"><br>
+        correo : <input type="text" name="correo" id="correo"><br>
+        ciudad : <input type="text" name="ciudad" id="ciudad"><br>
+        intereses : <input type="text" name="intereses" id="intereses"><br>
+        resultado : <input type="text" name="res" id="res"><br>
+        <div id="carga"></div>
+        
+    </article>
+    <script src="jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+
+        $(function () { //definimos funcionalidad
+            $("#get").click(function () {//funcionalidad respondera al evento del click del elemento "get"            |$ se usa cuando va a hacer algo
+                $.get("17-tarea-clase-get.php",{//cuando se ejecute esta funcionalidad, se llamara por metodo "get" a la pagina "17-get.php"
+                    nombre:$("#nombre").val(),//document.getElementbyId("v1").value
+                    correo:$("#correo").val(),//pasamos valores con un json
+                    ciudad:$("#ciudad").val(),//pasamos valores con un json
+                    intereses:$("#intereses").val()//pasamos valores con un json
+                },
+                function (data) {//data es la respuesta del web service o backend
+                    $("#res").val(data)//document.getElementbyId("res").value=data
+                })
+                alert(v1)
+            })
+            //alert("ejecutando")
+        })
+
+        $(function () { //definimos funcionalidad
+            $("#post").click(function () {//funcionalidad respondera al evento del click del elemento "get"            |$ se usa cuando va a hacer algo
+                $.post("17-post.php",{//cuando se ejecute esta funcionalidad, se llamara por metodo "get" a la pagina "17-get.php"
+                    v1:$("#v1").val(),//document.getElementbyId("v1").value
+                    v2:$("#v2").val()//pasamos valores con un json
+                },
+                function (data) {//data es la respuesta del web service o backend
+                    $("#res").val(data)//document.getElementbyId("res").value=data
+                })
+            })
+            //alert("ejecutando")
+        })
+        
+
+
+    </script>
+</body>
+</html>
